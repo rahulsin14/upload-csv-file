@@ -12,7 +12,7 @@
                         <%let k=0%>
                         <% for(i in rows){%>
                             <% for(j in rows[0]){%>
-                                <th onclick="sortTable(k)"><%=j%></th>
+                                <th onclick="sortTable('<%=k%>')"><%=j%></th>
                                 <%k+=1%>
                             <% } %>
                             <%break%>
@@ -36,8 +36,8 @@
         
         </table>
     </body>
-        <script src="sorting.js"></script>
-        <script src="search.js"></script>
+        <script src="/javascript/sorting.js"></script>
+        <script src="/javascript/search.js"></script>
 </html>
 
 

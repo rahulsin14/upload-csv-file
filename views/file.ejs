@@ -5,7 +5,8 @@
     </head>
     <body>
         <form action="/file/upload" enctype="multipart/form-data" method="POST">
-            <input type="file" name="filename" placeholder="filename">
+            <!-- validation only to upload csv file -->
+            <input type="file" name="filename" placeholder="filename" accept=".csv" />
             <input type="submit"  value="Upload">
         </form>
         <% for(f of files){%>
