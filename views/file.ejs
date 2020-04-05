@@ -1,26 +1,20 @@
-<form action="/file/upload" enctype="multipart/form-data" method="POST">
-    <input type="file" name="filename" placeholder="filename">
-    <input type="submit"  value="Upload">
-</form>
-<% for(f of files){%>
-    <p>
-        <a href="<%=f.filename%>"><%= f.filename %></a>
-    </p>
-<% } %>
-<table style="width:100%">
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Age</th>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Eve</td>
-      <td>Jackson</td>
-      <td>94</td>
-    </tr>
-  </table>
+<html>
+    <head>
+        <title><%=title%></title>
+
+    </head>
+    <body>
+        <form action="/file/upload" enctype="multipart/form-data" method="POST">
+            <input type="file" name="filename" placeholder="filename">
+            <input type="submit"  value="Upload">
+        </form>
+        <% for(f of files){%>
+            <p>
+                <a href="/file/open-file/<%=f._id%>"><%= f.filename %></a>
+            </p>
+        <% } %>
+    </body>
+    <script src="sorting.js"></script>
+    <script src="search.js"></script>
+</html>
+

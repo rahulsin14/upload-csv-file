@@ -21,17 +21,27 @@ module.exports.upload=function(req,res){
         return res.redirect('back');
     }
 }
-const results = [];
+
 module.exports.get=async function(req,res){
-    fs.createReadStream('data.csv')
-    .pipe(csv())
-    .on('data', (data) => results.push(data))
-    .on('end', () => {
-      console.log(results);
-    });
     const files=await File.find({});
     res.render('file',{
         title:"csv-file",
         files:files
     })
+}
+const results = [];
+module.exports.open_file=async function(req,res){
+    // let a=req.params.filename;
+    // C:/Users/Monaaa/Desktop/It's a big one/uploads/files/filename-1586107396535
+    const file=await File.findById(req.params.id);
+    fs.createReadStream(path.join(__dirname, '..', file.filename))
+    .pipe(csv())
+    .on('data', (data) => results.push(data))
+    .on('end', () => {
+    //   console.log(results);
+      res.render('table',{
+          title:'table',
+          rows:results.splice(0,100)
+      })
+    });
 }
